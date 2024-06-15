@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:padding="16dp"
+tools:context=".ui.activity.vechileActivty">
+
+<ImageView
+    android:id="@+id/ivBack"
+    android:layout_width="24dp"
+    android:layout_height="24dp"
+    android:layout_alignParentStart="true"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="16dp"
+    android:src="@drawable/ic_back"/>
+
+<TextView
+    android:id="@+id/tvVehicles"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true"
+    android:text="Vehicles"
+    android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+<ImageView
+    android:id="@+id/ivAdd"
+    android:layout_width="24dp"
+    android:layout_height="24dp"
+    android:layout_alignParentEnd="true"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="16dp"
+    android:src="@drawable/baseline_add_24" />
+
+    <RelativeLayout
+        android:id="@+id/vehicleCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvVehicles"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/card_background"
+        android:elevation="4dp"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/ivVehicleIcon"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentStart="true"
+            android:src="@drawable/ic_vechile" />
+
+        <EditText
+            android:id="@+id/tvVehicleName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="93dp"
+            android:layout_toEndOf="@id/ivVehicleIcon"
+            android:text="Demo Vechile name"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+
+        <EditText
+            android:id="@+id/tvVehicleInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvVehicleName"
+            android:layout_marginStart="104dp"
+            android:layout_marginTop="-3dp"
+            android:layout_toEndOf="@id/ivVehicleIcon"
+            android:text="Demo lisense plate"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+        <TextView
+            android:id="@+id/tvRegularServicing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvVehicleInfo"
+            android:layout_marginTop="16dp"
+            android:text="Regular Servicing"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+        <TextView
+            android:id="@+id/tvServicingDays"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvRegularServicing"
+            android:text="0 days left"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+        <TextView
+            android:id="@+id/tvDrivingCost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvServicingDays"
+            android:layout_marginTop="16dp"
+            android:text="Driving Cost"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+        <TextView
+            android:id="@+id/tvCostValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvDrivingCost"
+            android:text="0 npr / 100 km"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+        <TextView
+            android:id="@+id/tvAvgMileage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvCostValue"
+            android:layout_marginTop="16dp"
+            android:text="AVG Mileage"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+        <TextView
+            android:id="@+id/tvMileageValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvAvgMileage"
+            android:text="40 km / lit"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+        <TextView
+            android:id="@+id/tvLifetime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvMileageValue"
+            android:layout_marginTop="16dp"
+            android:text="LIFE TIME:"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+        <LinearLayout
+            android:id="@+id/lifetimeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvLifetime"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvLifetimeCost"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0 npr"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_cost" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvLifetimeFuel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0 ltr"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_fuel" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvLifetimeDistance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0 km"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_distance" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</RelativeLayout>
