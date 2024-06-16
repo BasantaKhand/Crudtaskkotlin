@@ -6,14 +6,13 @@ import android.view.LayoutInflater
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.example.crud_task.databinding.ActivityMainBinding
 import com.example.crud_task.databinding.DailogAddVechileBinding
 import com.example.crud_task.ui.activity.BrandActivity
 
 class MainActivity : AppCompatActivity() {
-    lateinit var mainBinding: ActivityMainBinding
+    private lateinit var mainBinding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -22,10 +21,7 @@ class MainActivity : AppCompatActivity() {
 
         mainBinding.ivAdd.setOnClickListener {
             showAddVehicleDialog()
-
         }
-
-
     }
 
     private fun showAddVehicleDialog() {
@@ -33,20 +29,20 @@ class MainActivity : AppCompatActivity() {
         val builder = AlertDialog.Builder(this)
             .setView(dialogBinding.root)
             .setTitle("Add Vehicle")
-
         val alertDialog = builder.show()
 
-
-
-        dialogBinding.buttonAddBike.setOnClickListener {
-            // Handle add bike action
+        val launchBrandActivity = {
+            alertDialog.dismiss() // Dismiss the dialog before starting the new activity
             val intent = Intent(this, BrandActivity::class.java)
             startActivity(intent)
+        }
 
-            dialogBinding.buttonAddScooter.setOnClickListener {
-                // Handle add scooter action
-                alertDialog.dismiss()
-            }
+        dialogBinding.buttonAddBike.setOnClickListener {
+            launchBrandActivity()
+        }
+
+        dialogBinding.buttonAddScooter.setOnClickListener {
+            launchBrandActivity()
         }
     }
 }

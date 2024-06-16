@@ -17,6 +17,9 @@
         android:theme="@style/Theme.CRUDTask"
         tools:targetApi="31">
         <activity
+            android:name=".ui.activity.SelectedBrandActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.activity.BrandActivity"
             android:exported="false" />
         <activity

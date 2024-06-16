@@ -29,21 +29,17 @@ class vechileActivty : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-//        setContentView(R.layout.activity_vechile)
         vechileBinding = ActivityVechileBinding.inflate(layoutInflater)
         setContentView(vechileBinding.root)
 
 
         var repo = vechileRepositoryImpl()
-//        vechileModel = VechileModel(repo)
-
+        vechileViewModel = VechileViewModel(repo)
 
     }
 
     fun uploadImage(){
         var vechileName = UUID.randomUUID().toString()
-
-
     }
     fun addVechile(url:String?,vechileName:String){
         var lisenNo : String = vechileBinding.tvVehicleInfo.text.toString()

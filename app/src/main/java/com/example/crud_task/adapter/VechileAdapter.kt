@@ -15,7 +15,7 @@ import com.google.android.libraries.mapsplatform.transportation.consumer.model.V
         class VehicleViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             val nameTextView: TextView = view.findViewById(R.id.tvVehicleName)
             val licensePlateTextView: TextView = view.findViewById(R.id.tvVehicleInfo)
-            // Add more views as needed
+            // Yet to add other views
         }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VehicleViewHolder {
@@ -24,7 +24,6 @@ import com.google.android.libraries.mapsplatform.transportation.consumer.model.V
         }
 
         override fun onBindViewHolder(holder: VehicleViewHolder, position: Int) {
-//            TODO("Not yet implemented")
             holder.licensePlateTextView.text = vehicles[position].toString()
             holder.nameTextView.text = vehicles[position].toString()
         }
