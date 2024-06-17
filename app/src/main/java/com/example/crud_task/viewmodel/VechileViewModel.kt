@@ -25,8 +25,8 @@ class VechileViewModel(val repository : vechileRepositoryImpl) : ViewModel() {
         }
     }
 
-    fun updateVechile(id:String, data: MutableMap<String, Any>?, callback: (Boolean, String?) -> Unit){
-        repository.updateVechile(id.toInt(),data,callback)
+    fun updateVechile(id:Int, data: MutableMap<String, Any>?, callback: (Boolean, String?) -> Unit){
+        repository.updateVechile(id,data,callback)
     }
 
 

@@ -19,7 +19,7 @@ class VechileAdapter(
     class VehicleViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val nameTextView: TextView = view.findViewById(R.id.tvVehicleName)
         val licensePlateTextView: TextView = view.findViewById(R.id.tvVehicleInfo)
-        val colorTextView: TextView = view.findViewById(R.id.textView_color) // Assuming you have added this in your layout
+        val colorTextView: TextView = view.findViewById(R.id.tvColor) // Assuming you have added this in your layout
         var editButton: View = view.findViewById(R.id.tvEdit)
     }
 
@@ -35,10 +35,7 @@ class VechileAdapter(
         holder.colorTextView.text = vehicle.color // Bind color to the colorTextView
         holder.editButton.setOnClickListener {
             var intent = Intent(context, UpdateActivity::class.java)
-            intent.putExtra("id", vehicle.id)
-            intent.putExtra("name", vehicle.name)
-            intent.putExtra("licensePlate", vehicle.licensePlate)
-            intent.putExtra("color", vehicle.color)
+            intent.putExtra("vechile",vehicles[position])
             context.startActivity(intent)
 
         }

@@ -14,36 +14,12 @@ import com.google.firebase.storage.StorageReference
 
 class vechileRepositoryImpl : VechileRespositroy {
     var firebaseDatabase: FirebaseDatabase = FirebaseDatabase.getInstance()
-    var ref: DatabaseReference = firebaseDatabase.getReference("vechile")
+    var ref : DatabaseReference  = firebaseDatabase.reference.child("vechile")
     private val db = FirebaseFirestore.getInstance()
     private val brandsCollection = db.collection("brands")
 
     var firebaseStorage: FirebaseStorage = FirebaseStorage.getInstance()
-    var storageRef: StorageReference = firebaseStorage.getReference("vechile")
-//    override fun addVechile(vechile: Vehicle, callback: (Boolean, String?) -> Unit) {
-//        TODO("Not yet implemented")
-//    }
-//    override fun addVechile(vechileModel: VechileModel, callback: () -> Unit) {
-//        val id = ref.push().key.toString()
-//        vechileModel.id = id
-////
-////        ref.child(id).setValue(vechileModel).addOnCompleteListener{
-////            if(it.isSuccessful){
-////                callback(true, "Success")
-////            }else{
-////                callback(false, it.exception.toString())
-////            }
-////        }
-//        ref.child(id).setValue(vechileModel).addOnCompleteListener {
-//            if (it.isSuccessful) {
-//                callback()
-//            } else {
-//                callback()
-//            }
-//        }
-
-
-//    }
+    var storageRef: StorageReference = firebaseStorage.reference.child("vechile")
 
 
     override fun addVechile(vechileModel: VechileModel, callback: (Boolean, String?) -> Unit) {
@@ -79,11 +55,9 @@ class vechileRepositoryImpl : VechileRespositroy {
                             vechileList.add(vechile)
                         }
                     }
-//
                     callback(vechileList, true, "Success")
 
 
-//                
                 }
             }
 

@@ -2,14 +2,17 @@ package com.example.crud_task.ui.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.crud_task.R
 import com.example.crud_task.adapter.VechileAdapter
 import com.example.crud_task.databinding.ActivityMainBinding
 import com.example.crud_task.databinding.DailogAddVechileBinding
@@ -28,7 +31,23 @@ class MainActivity : AppCompatActivity() {
         mainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mainBinding.root)
 
+        // Initialize ViewModel
+        val repo = vechileRepositoryImpl()
+        vechileViewModel = VechileViewModel(repo)
 
+        vechileAdapter = VechileAdapter(this, ArrayList())
+
+        vechileViewModel.fetchAllVechile()
+
+        vechileViewModel.vechileList.observe(this@MainActivity) { product ->
+            product?.let { vechileAdapter.updateData(it) }
+        }
+
+
+        mainBinding.recyclerView.apply {
+            layoutManager = LinearLayoutManager(this@MainActivity)
+            adapter = vechileAdapter
+        }
 
         mainBinding.ivAdd.setOnClickListener {
             val dialogBinding = DailogAddVechileBinding.inflate(LayoutInflater.from(this))
@@ -38,9 +57,10 @@ class MainActivity : AppCompatActivity() {
             val alertDialog = builder.show()
 
             val launchBrandActivity = {
-                alertDialog.dismiss() // Dismiss the dialog before starting the new activity
+                alertDialog.dismiss()
                 val intent = Intent(this, BrandActivity::class.java)
                 startActivity(intent)
+                finish()
             }
 
             dialogBinding.buttonAddBike.setOnClickListener {
@@ -50,18 +70,6 @@ class MainActivity : AppCompatActivity() {
             dialogBinding.buttonAddScooter.setOnClickListener {
                 launchBrandActivity()
             }
-        }
-
-        val repo = vechileRepositoryImpl()
-        vechileViewModel = VechileViewModel(repo)
-        val emptyList = emptyList<VechileModel>()
-        vechileViewModel.fetchAllVechile()
-
-        vechileAdapter = VechileAdapter(this, emptyList())
-
-        mainBinding.recyclerView.apply {
-            layoutManager = LinearLayoutManager(this@MainActivity)
-            adapter = vechileAdapter
         }
 
         ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT or ItemTouchHelper.LEFT) {
@@ -75,30 +83,10 @@ class MainActivity : AppCompatActivity() {
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val id = vechileAdapter.getVechileId(viewHolder.adapterPosition)
-                val vechileName = vechileAdapter.getVechileName(viewHolder.adapterPosition)
-
                 vechileViewModel.deleteVechile(id) { success, message ->
-                    if (success) {
-                        Toast.makeText(applicationContext, message, Toast.LENGTH_LONG).show()
-                    } else {
-                        Toast.makeText(applicationContext, message, Toast.LENGTH_LONG).show()
-                    }
+                    Toast.makeText(applicationContext, message, Toast.LENGTH_LONG).show()
                 }
             }
         }).attachToRecyclerView(mainBinding.recyclerView)
-
-        // Load data and update the adapter
-        loadVehicles()
-    }
-
-    private fun loadVehicles() {
-//         Assuming you have a method in ViewModel to fetch vehicles
-//        vechileViewModel.fetchAllVechile()
-//              vehicles->
-//            vechileAdapter.updateData(vehicles)
-//        }
-//        }
-//        vechileViewModel.fetchAllVechile { id ->
-//            vechileAdapter.updateData(id)
     }
 }

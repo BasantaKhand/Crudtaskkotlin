@@ -8,12 +8,14 @@ import com.example.crud_task.databinding.ActivityVechileBinding
 import com.example.crud_task.model.VechileModel
 import com.example.crud_task.repository.vechileRepositoryImpl
 import com.example.crud_task.viewmodel.VechileViewModel
+import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
 class vechileActivty : AppCompatActivity() {
     lateinit var vechileBinding: ActivityVechileBinding
     var firebaseDatabase: FirebaseDatabase = FirebaseDatabase.getInstance()
-    val vechileRef = firebaseDatabase.getReference("vechile")
+    val vechileRef : DatabaseReference= firebaseDatabase.reference.child("vechile")
+//    var ref: DatabaseReference = firebaseDatabase.reference.child("products")
     var repository = vechileRepositoryImpl()
     lateinit var vechileViewModel: VechileViewModel
 
@@ -34,9 +36,9 @@ class vechileActivty : AppCompatActivity() {
     }
 
     fun addVechile() {
-        val vechileColor = vechileBinding.textViewColor.toString()
-        val licenseNo = vechileBinding.textInputLayout2.editText?.text.toString()
-        val regNumber = vechileBinding.textVechileNumber.editText?.text.toString()
+        val vechileColor = vechileBinding.textViewColor.editText!!.text.toString()
+        val licenseNo = vechileBinding.textInputLayout2.editText!!.text.toString()
+        val regNumber = vechileBinding.textVechileNumber.editText!!.text.toString()
 
         if (vechileColor.isNotEmpty() && licenseNo.isNotEmpty() && regNumber.isNotEmpty()) {
             val vechileData = VechileModel("", vechileColor, licenseNo, regNumber)
