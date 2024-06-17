@@ -5,37 +5,38 @@ import android.os.Parcelable
 import com.google.android.libraries.mapsplatform.transportation.consumer.model.Vehicle
 
 data class VechileModel(
-    var id: String,
-    val name: String,
-    val licensePlate: String,
-    val imageUrl: String? = null // Added for image URL
-) : Parcelable {
-
+    var id: String? = null,
+    val name: String? = null,
+    val licensePlate: String? = null,
+    val color: String? = null
+) : Parcelable{
     constructor(parcel: Parcel) : this(
-        parcel.readString()!!,
-        parcel.readString()!!,
-        parcel.readString()!!,
-        parcel.readString() // For the image URL (nullable)
-    )
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString()
+    ) {
+    }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(id)
         parcel.writeString(name)
         parcel.writeString(licensePlate)
-        parcel.writeString(imageUrl) // Write the image URL
+        parcel.writeString(color)
     }
 
     override fun describeContents(): Int {
         return 0
     }
 
-    companion object CREATOR : Parcelable.Creator<Vehicle> {
-        override fun createFromParcel(parcel: Parcel): Vehicle {
-            return VechileModel.createFromParcel(parcel)
+    companion object CREATOR : Parcelable.Creator<VechileModel> {
+        override fun createFromParcel(parcel: Parcel): VechileModel {
+            return VechileModel(parcel)
         }
 
-        override fun newArray(size: Int): Array<Vehicle?> {
+        override fun newArray(size: Int): Array<VechileModel?> {
             return arrayOfNulls(size)
         }
     }
+
 }

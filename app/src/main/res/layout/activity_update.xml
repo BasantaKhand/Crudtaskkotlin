@@ -2,10 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:padding="16dp"
-tools:context=".ui.activity.vechileActivty">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".ui.activity.UpdateActivity">
 
     <ImageView
         android:id="@+id/ivBackVechile"
@@ -52,7 +52,7 @@ tools:context=".ui.activity.vechileActivty">
     </TextView>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textView_Color"
+        android:id="@+id/updateColor"
         android:layout_width="360dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -82,12 +82,12 @@ tools:context=".ui.activity.vechileActivty">
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_Color">
+        app:layout_constraintTop_toBottomOf="@+id/updateColor">
 
     </TextView>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout2"
+        android:id="@+id/updateRegisterNo"
         android:layout_width="360dp"
         android:layout_height="wrap_content"
 
@@ -118,12 +118,12 @@ tools:context=".ui.activity.vechileActivty">
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.875"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
+        app:layout_constraintTop_toBottomOf="@+id/updateRegisterNo">
 
     </TextView>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textVechileNumber"
+        android:id="@+id/updateVechileNumber"
         android:layout_width="360dp"
         android:layout_height="wrap_content"
 
@@ -141,16 +141,16 @@ tools:context=".ui.activity.vechileActivty">
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/registerBike"
+        android:id="@+id/registerUpdate"
         android:layout_width="416dp"
         android:layout_height="56dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="82dp"
         android:backgroundTint="@color/black"
-        android:text="Add"
+        android:text="update register"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textVechileNumber" >
+        app:layout_constraintTop_toBottomOf="@+id/updateVechileNumber" >
 
     </Button>
 

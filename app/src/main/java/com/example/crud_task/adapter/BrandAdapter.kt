@@ -29,7 +29,7 @@ class BrandAdapter(
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        val view = convertView ?: LayoutInflater.from(context).inflate(R.layout.item_brand, parent, false)
+        val view = convertView ?: LayoutInflater.from(context).inflate(R.layout.item_brand, parent, false) // in the layout whole activity are not used
         val textView: TextView = view.findViewById(R.id.textView_brand)
         val imageView: ImageView = view.findViewById(R.id.imageView2)
         textView.text = nameList[position]

@@ -1,5 +1,6 @@
 package com.example.crud_task.ui.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.GridView
 import android.widget.Toast
@@ -50,6 +51,8 @@ class BrandActivity : AppCompatActivity() {
             repository.addBrand(brandModel) { success, errorMessage ->
                 if (success) {
                     Toast.makeText(this, "Brand added successfully!", Toast.LENGTH_SHORT).show()
+                   val intent = Intent(this, vechileActivty::class.java)
+                    startActivity(intent)
                 } else {
                     Toast.makeText(this, "Error: $errorMessage", Toast.LENGTH_SHORT).show()
                 }
